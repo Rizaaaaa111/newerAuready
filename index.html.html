@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Era</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0% { background-color: black; }
+            50% { background-color: white; }
+            100% { background-color: black; }
+        }
+
+        h1 {
+            font-size: 4em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #timer {
+            font-size: 3em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>New Era</h1>
+    <h2>artem minecrapft</h2>
+    <div id="timer"></div>
+
+    <audio autoplay loop>
+        <source src="yeatpidor.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудиофайлы.
+    </audio>
+
+    <script>
+        function updateTimer() {
+            const now = new Date();
+            const futureDate = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate());
+            const totalSeconds = Math.floor((futureDate - now) / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById('timer').textContent = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s до 1 года`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
